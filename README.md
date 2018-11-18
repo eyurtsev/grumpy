@@ -1,6 +1,6 @@
 # Grumpy
 
-[[https://travis-ci.org/eyurtsev/grumpy.svg?branch=master]]
+[build]([https://travis-ci.org/eyurtsev/grumpy.svg?branch=master])
    
 A package for the cranky data scientist to make cross-validation into an
 over-abstracted mess that may yet still end up saving on some typing.
