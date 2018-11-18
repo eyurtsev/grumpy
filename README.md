@@ -1,5 +1,8 @@
 # Grumpy
 
+.. image:: https://travis-ci.org/eyurtsev/grumpy.svg?branch=master
+    :target: https://travis-ci.org/eyurtsev/grumpy
+
 A package for the cranky data scientist to make cross-validation into an
 over-abstracted mess that may yet still end up saving on some typing.
 
@@ -18,9 +21,3 @@ Try to make the following common tasks suck less:
 * Get model coefficients and metrics.
 * Compare models side by side.
 * Work with multiple 3rd party models simultaenously (e.g., statsmodels and sklearn).
-
-# Non-goals
-
-Most of the abstractions are formed around the final layer of a supervised learning task (i.e., fitting models on an already generated xy_df).
-This package will not really be helpful with any abstractions around feature generation or deal with unsupervised learning scenarios. 
-
