@@ -3,8 +3,6 @@
 .. image:: https://travis-ci.org/eyurtsev/grumpy.svg?branch=master
     :target: https://travis-ci.org/eyurtsev/grumpy
 
-[![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
-
 A package for the cranky data scientist to make cross-validation into an
 over-abstracted mess that may yet still end up saving on some typing.
 
