@@ -27,7 +27,7 @@ install:
   - pip install pandas==$PANDAS
 
 script: 
-  - py.test grumpy/ --cov grumpy  -v --cov-report term-missing
+  - py.test --cov grumpy  -v
 
 after_success:
   - coveralls
