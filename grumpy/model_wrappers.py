@@ -4,6 +4,7 @@ from typing import Any, List, NamedTuple, Optional, Union
 
 import numpy as np
 import pandas as pd
+from sklearn import metrics
 
 from .metrics import make_classification_report, make_regression_summary_stats
 from .model_inspection import get_sklearn_model_coefficients
@@ -154,6 +155,12 @@ class ClassifierWrapper(AbstractModelWrapper):
         y_data = df[self._target].values
         probas_df = self.predict_proba(df)
         return make_classification_report(y_data, y_hat, probas_df)
+
+    def get_precision_recall_curve(self, xy_data, target_class):
+        """Generate a precision recall curve for the given data."""
+        y_label = xy_data[self._target]
+        y_pred = self.predict_proba(xy_data)[target_class]
+        return metrics.precision_recall_curve(y_label, y_pred)
 
     @property
     def estimator_type(cls) -> EstimatorType:

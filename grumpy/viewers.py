@@ -47,6 +47,10 @@ class CVViewer(object):
         fold = self._folds_mapping[idx_max]
         return _make_fold_view(fold, self._df)
 
+    def get_fold(self, fold_id) -> "AbstractFoldViewer":
+        """Get fold by fold id."""
+        return _make_fold_view(self._folds_mapping[fold_id], self._df)
+
     @property
     def models_df(self) -> pd.DataFrame:
         """Get a dataframe summarizing model structure information."""

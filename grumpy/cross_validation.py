@@ -29,7 +29,8 @@ class AbstractModelSpecifier(abc.ABC):
 
 class SimpleSplit(AbstractSampleSplitter):
     def __init__(
-        self, train_fraction: float = 0.7, randomize: bool = True, seed: Optional[int] = None
+        self, train_fraction: float = 0.7, randomize: bool = True, seed: Optional[int] = None,
+        name=None,
     ):
         """Generates a single split using a simple parameterization.
 
@@ -44,6 +45,7 @@ class SimpleSplit(AbstractSampleSplitter):
         self._train_fraction = train_fraction
         self._randomize = randomize
         self._seed = seed
+        self._name = name or 'Unnamed'
 
     def get_sample_slices(self, xy_data: pd.DataFrame) -> Iterator[SampleSlice]:
         """Get the different sample slices."""
@@ -61,7 +63,7 @@ class SimpleSplit(AbstractSampleSplitter):
         train_idx_end = int(num_samples * self._train_fraction)
 
         yield SampleSlice(
-            slice_id="1",
+            slice_id=self._name,
             train_index=final_index[:train_idx_end],
             test_index=final_index[train_idx_end:],
         )
