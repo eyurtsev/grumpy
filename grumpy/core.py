@@ -40,10 +40,11 @@ class CrossValidator(AbstractCrossValidator):
     def split(self, xy_data: pd.DataFrame) -> Iterator[FoldSpec]:
         """Generate fold specs that can be used to fit the given data."""
         sample_slices = self._sample_splitter.get_sample_slices(xy_data)
-        model_slices = self._model_specifier.get_model_slices()
-
+        # Materialize all model slices otherwise the iterator in the for loop below will be
+        # exhausted.
+        # model_slices = list(self._model_specifier.get_model_slices())
         for sample_slice in sample_slices:
-            for model_slice in model_slices:
+            for model_slice in self._model_specifier.get_model_slices():
                 yield FoldSpec(sample_slice=sample_slice, model_slice=model_slice)
 
     def cross_validate(self, df: pd.DataFrame, seed=None) -> CVViewer:
